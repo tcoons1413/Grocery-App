@@ -17,22 +17,17 @@ const addButton = document.querySelector("#add-button").addEventListener("click"
     if (inputValue === "") {
         alert("Must Submit Item")
     } else {
-        push(shoppingListInDb, inputValue)
+        push(shoppingListInDb, [inputValue, createUniqueID()])
         clearInputFielEl()
 
     }
 })
-const clearButton = document.querySelector("#clear-button").addEventListener("click", function () {
-    ulEl.innerHTML = "Your cart is empty..."
-
-})
+const clearButton = document.querySelector("#clear-button").addEventListener("click", clearCart)
 
 onValue(shoppingListInDb, function (snapshot) {
 
     if (snapshot.exists()) {
         let shoppingListArray = Object.entries(snapshot.val())
-
-
 
         clearShoppingListEl()
 
@@ -40,8 +35,10 @@ onValue(shoppingListInDb, function (snapshot) {
             let currentItem = shoppingListArray[i]
             let currentItemID = currentItem[0]
             let currentItemValue = currentItem[1]
-            render(currentItem)
-
+            console.log(currentItem[1][1])
+            if (currentItem[1][1] === createUniqueID()) {
+                render(currentItem)
+            }
         }
     } else {
 
@@ -59,7 +56,7 @@ function clearInputFielEl() {
 
 function render(item) {
     let itemID = item[0]
-    let itemValue = item[1]
+    let itemValue = item[1][0]
     let newEl = document.createElement("li")
     newEl.innerHTML = itemValue
     newEl.addEventListener("click", function () {
@@ -70,3 +67,18 @@ function render(item) {
     ulEl.append(newEl)
 }
 
+function clearCart() {
+    let exactLocationOfItemInDB = ref(database, `shoppingList/`)
+    remove(exactLocationOfItemInDB)
+}
+
+function createUniqueID() {
+    let UUID = localStorage.getItem("UUID")
+    if (!UUID) {
+        UUID = crypto.randomUUID()
+        localStorage.setItem("UUID", UUID)
+    }
+    return UUID
+}
+
+createUniqueID()
