@@ -22,93 +22,18 @@ body {
     background-color: white;
 }
 
-/* .scrolling {
-    overflow: hidden;
-    width: 100%;
-    background: #EEF0F4;
-    position: relative;
-}
-
-.scroll-left {
-    width: 400px;
-    margin-top: 10px;
-    height: 75px;
-    -moz-transform: translateX(0%);
-    -webkit-transform: translateX(0%);
-    transform: translateX(-30%);
-
-}
-
-.scroll-left p {
-    white-space: nowrap;
-    font-size: 50px;
-    position: absolute;
-    left: 30%;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    line-height: 75px;
-    text-align: center;
-    -moz-animation: scroll-left 10s linear infinite;
-    -webkit-animation: scroll-left 10s linear infinite;
-    animation: scroll-left 10s linear infinite;
-}
-
-
-@-moz-keyframes scroll-left {
-    0% {
-        -moz-transform: translateX(100%);
-    }
-
-    100% {
-        -moz-transform: translateX(-100%);
-    }
-}
-
-@-webkit-keyframes scroll-left {
-    0% {
-        -webkit-transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(-100%);
-    }
-}
-
-@keyframes scroll-left {
-    0% {
-        -moz-transform: translateX(100%);
-
-        -webkit-transform: translateX(100%);
-
-        transform: translateX(100%);
-    }
-
-    100% {
-        -moz-transform: translateX(-100%);
-
-        -webkit-transform: translateX(-100%);
-
-        transform: translateX(-100%);
-    }
-} */
-
-
-
-.scrolling {
-    font-size: 50px;
-}
-
 .marquee {
-
+    font-style: 'Rubik',
+        sans-serif;
+    font-weight: 800;
+    background-color: #EEF0F4;
     margin: 0 auto;
-    white-space: nowrap;
+    font-size: 50px;
     overflow: hidden;
-    position: absolute;
-    width: 400px;
-
-
-
+    position: relative;
+    white-space: nowrap;
+    margin-top: 1%;
+    padding: 3%;
 }
 
 .marquee span {
@@ -119,12 +44,11 @@ body {
 
 .marquee2 span {
     animation-delay: 5s;
-
 }
 
 @keyframes marquee {
     0% {
-        transform: translate(0, 0);
+        transform: translate(0%, 0);
     }
 
     100% {
